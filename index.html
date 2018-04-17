@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Liars Dice</title>
+    
+<style>
+.bigger{
+	font-size:3em;
+}
+
+.cardStyle{
+	width:70px;	
+}
+</style>
+	
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!--jQuery Link-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Core CSS 
+    <link href="libs/bootstrap.min.css" rel="stylesheet">
+    -->
+    
+    <!-- jQuery 
+    <script src="libs/jquery.min.js"></script>
+    -->
+
+    <!-- Bootstrap Core JavaScript 
+    <script src=".libs/bootstrap.min.js"></script>
+     -->
+    
+    <!-- Liars Dice JavaScript -->
+    <script src="liarsDice.js"></script>
+	
+	<!-- Blackjack JavaScript -->
+    <script src="blackjack.js"></script>
+
+</head>
+
+<body>
+<!--Blackjack-->
+<div class="well-lg">
+<h4 title="Blackjack">Blackjack</h4>
+
+<div class="well">
+
+  <h3><span class="label label-default">Blackjack</span></h3>
+  
+  <br/>
+  <div class="col-xs-12 text-center">
+	<div class="col-xs-6">
+		<span class="label label-primary">Player</span>
+	</div>
+	<div class="col-xs-6">
+		<span class="label label-warning">Dealer</span>
+	</div>
+  </div>
+  
+  <br/><br/>
+  
+  
+<div id="blackjackBoard" class="col-xs-12 text-center">
+	<div id="playerCards" class="col-xs-6">
+		<div id="playerCard1" class="col-xs-2">
+			<div id="card1" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+		<div id="playerCard2" class="col-xs-2">
+			<div id="card2" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+		<div id="afterPlayerCard" class="col-xs-1"></div>
+		
+		<div id="playerCard3" class="col-xs-2" style="display:none">
+			<div id="card3" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+		<div id="playerCard4" class="col-xs-2" style="display:none">
+			<div id="card4" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+		<div id="playerCard5" class="col-xs-2" style="display:none">
+			<div id="card5" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+		<div id="playerCard6" class="col-xs-2" style="display:none">
+			<div id="card6" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+	</div>
+	<div id="dealerCards" class="col-xs-6">
+		<div id="beforeDealerCard" class="col-xs-4"></div>
+		
+		<div id="dealerCard1" class="col-xs-4">
+			<div id="cardD1" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+		
+		<div id="dealerCard2" class="col-xs-4">
+			<div id="cardD2" class="bigger">
+			<i class="glyphicon glyphicon-adjust" title="card"></i>
+			</div>
+		</div>
+	</div>
+ 
+</div> <!--END board-->
+   
+   
+   <br/><br/><br/><br/><br/><br/><br/>
+   
+   <div id="btnArea" class="text-center">
+   <br/>
+   <button id="shuffler" class="btn btn-success btn-lg btn-block" onclick="blackjackDeal()" title="Shuffle Up and Deal">Shuffle Up and Deal<br/><i class="glyphicon glyphicon-repeat"></i></button>
+   <br/>
+	<div class="btn-block btn-group-justified">
+		<a id="changeBet" class="btn btn-danger btn-lg" onclick="changeBet()" title="Change Bet">Change Bet<br/><i class="glyphicon glyphicon-transfer"></i></a>
+		<a id="stand" class="btn btn-warning btn-lg" onclick="stand()" title="Stand">Stand<br/><i class="glyphicon glyphicon-ok"></i></a>
+		<a id="hitMe" class="btn btn-primary btn-lg" onclick="hitMe()" title="Hit Me">Hit Me<br/><i class="glyphicon glyphicon-plus"></i></a>
+		<a style="display:none" id="hitMe2" class="btn btn-primary btn-lg" onclick="hitMe2()" title="Hit Me">Hit Me Again!<br/><i class="glyphicon glyphicon-plus"></i></a>
+		<a style="display:none" id="hitMe3" class="btn btn-primary btn-lg" onclick="hitMe3()" title="Hit Me">Hit Me Yet Again!<br/><i class="glyphicon glyphicon-plus"></i></a>
+		<a style="display:none" id="hitMe4" class="btn btn-primary btn-lg" onclick="hitMe4()" title="Hit Me" disabled>Hit Me again! I hate money!<br/><i class="glyphicon glyphicon-plus"></i></a>
+	</div>
+	</div><!--END btnArea-->
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div><!--END well-->
+
+</div>
+
+</body>
+
+</html>
